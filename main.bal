@@ -1,9 +1,9 @@
 //import local file .bal
-import project_Ballerina.LocalIO;
+import project_Ballerina.NetworkIo;
 import ballerina/io;
 
 //Standar variable
 public function main() {
-  json|error vStudents = LocalIO:hello();
-  io:println(vStudents);
+  string|error ComputerFileWiki = NetworkIo:hello();
+  io:println(ComputerFileWiki);
 }
