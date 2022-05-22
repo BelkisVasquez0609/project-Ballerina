@@ -1,10 +1,20 @@
-# Returns the string `Hello` with the input string name.
-#
-# + name - name as a string
-# + return - "Hello, " with the input string name
-public function hello(string name) returns string {
-    if !(name is "") {
-        return "Hello, " + name;
-    }
-    return "Hello, World!";
+import ballerina/io;
+
+public function hello() returns json|error {
+    string Path = "./files/DocJson.json";
+    json Doc = check io:fileReadJson(Path);
+
+    json JsonStudents = {
+        Doc,
+        "Students":{
+            "Name":"Julian",
+            "Grupo":"F"
+        }
+    };
+
+    json|error InputStudent =  check io:fileWriteJson(Path,JsonStudents);
+
+    json resultStudents = check io:fileReadJson(Path);
+
+    return (resultStudents);
 }
